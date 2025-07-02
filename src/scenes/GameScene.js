@@ -143,12 +143,25 @@ export default class GameScene extends Phaser.Scene {
     this.startTime = performance.now()
     
     this.moveText = this.add.text(this.scale.width - 20, 20, '이동 횟수: 0', {
-      fontSize: '18px', color: '#fff', backgroundColor: 'rgba(0,0,0,0.4)', padding: {x:8, y:4}
+      fontSize: '18px', color: '#fff', padding: {x:8, y:4}
     }).setOrigin(1, 0).setDepth(1000)
     
     this.timeText = this.add.text(this.scale.width - 20, 50, '시간: 0.0초', {
-      fontSize: '18px', color: '#fff', backgroundColor: 'rgba(0,0,0,0.4)', padding: {x:8, y:4}
+      fontSize: '18px', color: '#fff', padding: {x:8, y:4}
     }).setOrigin(1, 0).setDepth(1000)
+
+    const homeBtn = this.add.text(20, 20, '홈으로', {
+      fontSize: '18px',
+      color: '#fff',
+      padding: { x: 10, y: 6 },
+    })
+      .setOrigin(0, 0)
+      .setInteractive()
+      .setDepth(1000)
+
+    homeBtn.on('pointerdown', () => {
+      this.scene.start('MenuScene')
+    })
   }
 
   update(time) {
